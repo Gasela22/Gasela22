@@ -1,0 +1,56 @@
+import java.util.Scanner;
+
+public class StudentGradeCalculator {
+
+    // Method to calculate the grade based on the average score
+    public static String calculateGrade(double average) {
+        if (average >= 90) {
+            return "A";
+        } else if (average >= 80) {
+            return "B";
+        } else if (average >= 70) {
+            return "C";
+        } else if (average >= 60) {
+            return "D";
+        } else {
+            return "F";
+        }
+    }
+
+    public static void main(String[] args) {
+        Scanner scanner = new Scanner(System.in);
+
+        // Input: Student's Name
+        System.out.print("Enter student's name: ");
+        String studentName = scanner.nextLine();
+
+        // Input: Number of subjects
+        System.out.print("Enter number of subjects: ");
+        int numSubjects = scanner.nextInt();
+
+        // Initialize variables
+        double totalMarks = 0;
+        double average;
+
+        // Loop to input marks for each subject
+        for (int i = 1; i <= numSubjects; i++) {
+            System.out.print("Enter marks for subject " + i + ": ");
+            double marks = scanner.nextDouble();
+            totalMarks += marks;
+        }
+
+        // Calculate average marks
+        average = totalMarks / numSubjects;
+
+        // Calculate grade
+        String grade = calculateGrade(average);
+
+        // Output the results
+        System.out.println("\nStudent: " + studentName);
+        System.out.println("Total Marks: " + totalMarks);
+        System.out.println("Average Marks: " + average);
+        System.out.println("Grade: " + grade);
+
+        scanner.close();
+    }
+}
